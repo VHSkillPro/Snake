@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #ccc;
+}
+
+.row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+button{
+    padding: 3px 20px;
+    font-size: 18px;
+}
+
+.canvas{
+    background-color: #fff;
+}
+
+.container{
+    display: flex;
+}
+
+.config-board{
+    border: solid 1px #000;
+    margin-left: 5px;
+    width: 300px;
+    padding: 20px;
+    height: 300px;
+    background-color: #fff;
+}
+
+.config-board__select{
+    width: 70%;
+}
+
+label, option, select{
+    font-size: 18px;
+}
+
+label{
+    font-weight: bold;
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <canvas class="canvas" id="canvas" style="border: 1px solid #000;"></canvas>
+        <div class="config-board">
+            <div class="row">
+                <label for="speed">Speed: </label>
+                <select name="speed" id="speed" class="config-board__select">
+                    <option value="SLOW">Slow</option>
+                    <option value="DEFAULT">Normal</option>
+                    <option value="FAST">Fast</option>
+                    <option value="FASTEST">Fastest</option>
+                </select>
+            </div>
+            <div class="row" style="justify-content: center;">
+                <button id="playButton">Play</button>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/main.js" type="module"></script>
+</body>
+</html>
