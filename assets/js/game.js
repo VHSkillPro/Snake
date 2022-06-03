@@ -2,22 +2,23 @@ import { SNAKE_SPEED } from "./config.js";
 import Fruit from "./fruit.js";
 import Snake from "./snake.js";
 import { Direction } from "./core.js";
+import Vector2i from "./vector2i.js";
 
-export default class Game{
-    constructor(canvas){
-        this.canvas = canvas
+export default class Game {
+    constructor(canvas) {
+        this.canvas = canvas;
         this.snake = new Snake(canvas);
         this.fruit = new Fruit(canvas);
         this.fruit.randomPos(this.snake.body);
     }
 
-    unset(){
+    unset() {
         clearInterval(this.gameLoop);
     }
 
-    event(){
+    event() {
         document.addEventListener('keydown', (e) => {
-            switch (e.code){
+            switch (e.code) {
                 case "ArrowLeft":
                     this.snake.changeDirection = Direction.LEFT;
                     break;
@@ -37,28 +38,33 @@ export default class Game{
         });
     }
 
-    play(){
+    gameover() {
+        this.unset();
+        this.canvas.text("GAME OVER", new Vector2i(this.canvas.size.x / 2, this.canvas.size.y / 2), 40, "Arial");
+    }
+
+    play() {
         this.event();
 
         this.gameLoop = setInterval(() => {
             // Update
             this.snake.update();
-            
+
             // Check eat fruit
-            if (this.snake.eatFruit(this.fruit)){
+            if (this.snake.eatFruit(this.fruit)) {
                 this.snake.isEatFruit = true;
                 this.fruit.randomPos(this.snake.body);
-            }
-
-            // Check Lose
-            if (this.snake.isLose()){
-                this.unset();
             }
 
             // Draw canvas
             this.canvas.clear();
             this.fruit.draw();
             this.snake.draw();
+
+            // Check Lose
+            if (this.snake.isLose()) {
+                this.gameover();
+            }
         }, SNAKE_SPEED);
     }
 }
